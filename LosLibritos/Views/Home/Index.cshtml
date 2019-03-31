@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+}
+<br />
+<br />
+<br />
+<div class="col-md-3">
+    <div>
+        <form action="@Url.Action("Index","Home")" method="post">
+            <div>
+                <p>Filtrar por:</p>
+                <input type="text" class="form-control" name="Busqueda" placeholder="Buscar" />
+                <select name="opc" class="form-control">
+                    <option value="Nombre">Nombre</option>
+                    <option value="Codigo">Codigo</option>
+                </select>
+            </div>
+            <input type="submit" value="Buscar" class="btn btn-default form-control" />
+        </form>
+    </div>
+    <hr />
+    
+    <button data-toggle="collapse" class="btn btn-info form-control" data-target="#demo">Generos</button>
+
+    <div id="demo" class="collapse">
+        @{ Html.RenderAction("Index", "Generoes");}
+    </div>
+</div>
+
+<div class="col-md-9">
+    @{ Html.RenderAction("Index", "Libroes");}
+</div>
+

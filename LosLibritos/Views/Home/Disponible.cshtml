@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LosLibritos.Models.Libro>
+@{
+    ViewBag.Title = "Disponible";
+}
+
+<h2>Disponible</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero.NombreGenero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoLibro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPrestamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero.NombreGenero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoLibro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPrestamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.Id_Libro })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="@Url.Action("Delete", new { id = item.Id_Libro })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="@Url.Action("Details", new { id = item.Id_Libro })" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
